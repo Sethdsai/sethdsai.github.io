@@ -1,0 +1,36 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0c0c0c;--surface:#151515;--text:#c8c8c8;--dim:#666;--pink:#e8a;--border:#222}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:680px;margin:0 auto;padding:24px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0 32px;border-bottom:1px solid var(--border);margin-bottom:40px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-text{font-size:18px;font-weight:700;letter-spacing:-0.5px;color:#eee}
+nav{display:flex;gap:20px}
+nav a{font-size:14px;color:var(--dim);transition:color .15s}
+nav a:hover{color:#eee}
+.hero{margin-bottom:56px}
+.hero h1{font-size:clamp(28px,6vw,42px);font-weight:800;letter-spacing:-1px;color:#eee;margin-bottom:12px}
+.hero p{font-size:16px;color:var(--dim);line-height:1.7}
+.projects{margin-bottom:56px}
+.projects h2,.about h2,.links h2{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:20px}
+.grid{display:flex;flex-direction:column;gap:12px}
+.card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;transition:border-color .2s,transform .15s}
+.card:hover{border-color:#444;transform:translateY(-2px)}
+.card:active{transform:translateY(0)}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.card h3{font-size:16px;font-weight:700;color:#eee}
+.card p{font-size:14px;color:var(--dim);line-height:1.5;margin-bottom:12px}
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;background:#1a1a1a;color:var(--dim);margin-right:6px;border:1px solid var(--border)}
+.about{margin-bottom:56px}
+.about p{font-size:15px;color:var(--dim);line-height:1.7;margin-bottom:14px}
+.links{margin-bottom:48px}
+.link-list{display:flex;flex-direction:column;gap:8px}
+.link-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:15px;transition:border-color .2s}
+.link-row:hover{border-color:#444}
+.arrow{color:var(--dim);transition:transform .2s}
+.link-row:hover .arrow{transform:translateX(4px)}
+footer{text-align:center;padding-top:24px;border-top:1px solid var(--border)}
+footer p{font-size:12px;color:var(--dim)}
+@media(min-width:600px){.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid .card:last-child{grid-column:span 2}}
