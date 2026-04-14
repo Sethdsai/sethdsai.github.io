@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Rodex Toolbox</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23111'/><rect x='4' y='2' width='10' height='10' rx='2' fill='%235a3a1a'/><rect x='18' y='2' width='10' height='10' rx='2' fill='%235a3a1a'/><rect x='4' y='12' width='24' height='18' rx='3' fill='%233a6a2a'/></svg>">
+<link rel="stylesheet" href="r.css">
+</head>
+<body>
+<div id="app">
+<div id="splash" class="splash on">
+<div class="sp-inner">
+<svg viewBox="0 0 80 80" width="80" height="80">
+<rect x="4" y="4" width="72" height="72" rx="14" fill="#0c0c0c" stroke="#3a6a2a" stroke-width="2"/>
+<rect x="14" y="8" width="22" height="20" rx="3" fill="#5a3a1a"/>
+<rect x="44" y="8" width="22" height="20" rx="3" fill="#5a3a1a"/>
+<rect x="14" y="28" width="52" height="40" rx="5" fill="#3a6a2a"/>
+<rect x="20" y="36" width="8" height="8" rx="1" fill="#2a4a1a"/>
+<rect x="40" y="44" width="8" height="8" rx="1" fill="#2a4a1a"/>
+</svg>
+<h1>RODEX</h1>
+<p>TOOLBOX</p>
+<div class="bar"><div class="bar-fill"></div></div>
+</div>
+</div>
+
+<div id="main" class="hidden">
+<header>
+<div class="h-left">
+<svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="6" fill="#0c0c0c" stroke="#3a6a2a" stroke-width="1.5"/><rect x="6" y="4" width="9" height="8" rx="1.5" fill="#5a3a1a"/><rect x="17" y="4" width="9" height="8" rx="1.5" fill="#5a3a1a"/><rect x="6" y="12" width="20" height="16" rx="2" fill="#3a6a2a"/><rect x="9" y="16" width="3" height="3" rx=".5" fill="#2a4a1a"/><rect x="17" y="19" width="3" height="3" rx=".5" fill="#2a4a1a"/></svg>
+<span>rodex</span>
+</div>
+</header>
+
+<div id="content" class="content">
+<div id="p-home" class="page on">
+<div class="hi"><h2>hey miner</h2><p>pick a tool</p></div>
+<div class="stats">
+<div class="st"><span class="sv">726</span><span class="sl">items</span></div>
+<div class="st"><span class="sv">39</span><span class="sl">enchants</span></div>
+<div class="st"><span class="sv">28</span><span class="sl">potions</span></div>
+<div class="st"><span class="sv">1.21</span><span class="sl">version</span></div>
+</div>
+<div class="tools">
+<div class="tc" onclick="go('ench')"><span class="ti">&#9876;</span><span class="tn">Enchants</span></div>
+<div class="tc" onclick="go('craft')"><span class="ti">&#9881;</span><span class="tn">Crafting</span></div>
+<div class="tc" onclick="go('pot')"><span class="ti">&#9879;</span><span class="tn">Potions</span></div>
+<div class="tc" onclick="go('cmd')"><span class="ti">&#9000;</span><span class="tn">Commands</span></div>
+<div class="tc" onclick="go('red')"><span class="ti">&#9898;</span><span class="tn">Redstone</span></div>
+<div class="tc" onclick="go('skin')"><span class="ti">&#9787;</span><span class="tn">Skins</span></div>
+<div class="tc" onclick="go('bio')"><span class="ti">&#9752;</span><span class="tn">Biomes</span></div>
+<div class="tc" onclick="go('seed')"><span class="ti">&#9830;</span><span class="tn">Seeds</span></div>
+</div>
+</div>
+
+<div id="p-ench" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Enchantments</h2></div>
+<div class="sb"><input type="text" placeholder="search..." oninput="filtEnch(this.value)"></div>
+<div id="ench-l" class="il"></div>
+</div>
+
+<div id="p-craft" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Crafting</h2></div>
+<div class="sb"><input type="text" placeholder="search..." oninput="filtCraft(this.value)"></div>
+<div id="craft-l" class="il"></div>
+</div>
+
+<div id="p-pot" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Potions</h2></div>
+<div class="sb"><input type="text" placeholder="search..." oninput="filtPot(this.value)"></div>
+<div id="pot-l" class="il"></div>
+</div>
+
+<div id="p-cmd" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Commands</h2></div>
+<div class="ccat" id="cmd-cats"></div>
+<div id="cmd-form" class="cform"></div>
+<div class="cout"><div class="clbl">output</div><div id="cmd-out" class="cres">/give @p diamond_sword</div><button class="cpb" onclick="cpCmd()">copy</button></div>
+</div>
+
+<div id="p-red" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Redstone</h2></div>
+<div id="red-l" class="il"></div>
+</div>
+
+<div id="p-skin" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Skins</h2></div>
+<div class="sk-row"><input type="text" id="sk-in" placeholder="minecraft username"><button class="sk-btn" onclick="loadSk()">view</button></div>
+<div id="sk-prev" class="sk-prev"><p class="sk-ph">enter a username above</p></div>
+</div>
+
+<div id="p-bio" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Biomes</h2></div>
+<div class="sb"><input type="text" placeholder="search..." oninput="filtBio(this.value)"></div>
+<div id="bio-l" class="il"></div>
+</div>
+
+<div id="p-seed" class="page">
+<div class="ph"><button class="bk" onclick="go('home')">&#8592;</button><h2>Seeds</h2></div>
+<div id="seed-l" class="il"></div>
+</div>
+</div>
+
+<nav class="bnav">
+<button class="nb on" onclick="go('home')" data-p="home"><span class="ni">&#8962;</span><span class="nl">home</span></button>
+<button class="nb" onclick="go('ench')" data-p="ench"><span class="ni">&#9876;</span><span class="nl">tools</span></button>
+<button class="nb" onclick="go('craft')" data-p="craft"><span class="ni">&#9881;</span><span class="nl">craft</span></button>
+<button class="nb" onclick="go('cmd')" data-p="cmd"><span class="ni">&#9000;</span><span class="nl">cmds</span></button>
+</nav>
+</div>
+
+<div id="toast" class="toast hidden">copied</div>
+</div>
+<script src="r.js"></script>
+</body>
+</html>
